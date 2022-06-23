@@ -5,6 +5,8 @@ from rest_framework import viewsets,status
 from django_filters import rest_framework as filters
 from rest_framework.permissions import IsAdminUser,IsAuthenticated,AllowAny
 from rest_framework.response import Response
+from rest_framework.decorators import api_view,permission_classes,authentication_classes
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -35,3 +37,19 @@ class AnswerViewSet(viewsets.ModelViewSet):
     serializer_class=AnswerSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_fields = ('id', 'answer')
+
+@api_view(["POST"])
+@csrf_exempt
+@permission_classes(AllowAny)
+def guardar_certificacion(request):
+    datos=request.data
+    try:
+        instructor=Profile.objects.get(id=datos['id'])
+        test=Test.objects.create(instructor=instructor,course=datos['course_id'], score_approve=datos['score_approve'])
+        
+        for item in datos['certificacion']:
+            Question.objects.create(test=test,pregunta=item['pregunta'], tipo=item['tipo'])
+
+        return Response(status=status.HTTP_201_CREATED)
+    except Exception as e:
+        return Response('%s'%(e),status=status.HTTP_500_INTERNAL_SERVER_ERROR)

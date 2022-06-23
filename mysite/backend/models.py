@@ -25,15 +25,14 @@ class Test(models.Model):
 
 class Question(models.Model):
     test=models.ForeignKey(Test,null=False,on_delete=models.CASCADE)
-    question=models.CharField(max_length=255,unique=True ,null=False,blank=False)
-    tipo=models.IntegerField(null=False,blank=False)
-    score=models.FloatField(null=False, blank=True)
+    pregunta=models.CharField(max_length=255,unique=True ,null=False,blank=False)
+    tipo=models.CharField(null=False,blank=False)
     def __str__(self):
-        return self.test
+        return self.pregunta
 
 class Answer(models.Model):
     question=models.ForeignKey(Question,null=False,on_delete=models.CASCADE)
-    answer=models.CharField(max_length=255,unique=True ,null=False,blank=False)
-    correct=models.BooleanField(null=False, blank=True,default=False)
+    respuesta=models.CharField(max_length=255,unique=True ,null=False,blank=False)
+    correcta=models.BooleanField(null=False, blank=True,default=False)
     def __str__(self):
-        return self.question
+        return self.respuesta
