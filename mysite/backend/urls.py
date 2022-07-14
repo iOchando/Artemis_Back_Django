@@ -10,4 +10,7 @@ router.register('answer', views.AnswerViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('guardar-certificacion/', views.guardar_certificacion),
+    path('get-certificacion/', views.get_certificacion),
+    path('revision-certificacion/', views.revision_certificacion),
 ]

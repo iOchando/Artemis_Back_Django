@@ -55,6 +55,23 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        # 'knox.auth.TokenAuthentication'
+    ],
+    # 'DATETIME_FORMAT': "%d/%m/%Y %H:%M:%S",
+    # 'DATE_INPUT_FORMATS': ["%d-%m-%Y",'%Y-%m-%d'],
+    # 'DATE_FORMAT':["%d-%m-%Y",'%Y-%m-%d'],
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAdminUser',
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 ROOT_URLCONF = 'mysite.urls'
 CORS_ALLOW_ALL_ORIGINS=True
@@ -82,10 +99,21 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'artemis', 
+        'USER': 'gf', 
+        'PASSWORD': 'uPKsp22tBeBC506WRBv21d7kniWiELwg',
+        'HOST': '157.230.2.213', 
+        'PORT': '5432',
     }
 }
 
@@ -127,4 +155,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static_artemis/'
+STATIC_ROOT ='static'
+MEDIA_URL = '/media_artemis/'
+MEDIA_ROOT = 'media/images'
