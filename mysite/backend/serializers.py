@@ -5,6 +5,9 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = '__all__'  
+        nombre_documento = serializers.SerializerMethodField('loadnombre_documento')
+        def loadnombre_documento(self, obj):
+                return obj.firma.name
 
 class TestSerializer(serializers.ModelSerializer):
     class Meta:
