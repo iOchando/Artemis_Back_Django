@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dicfy+gbiu6t2z6kb^_0spm!cj6e^s5)f7!v(46xu8@!0_%hhk'
+SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -56,9 +56,10 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
+    
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
         # 'knox.auth.TokenAuthentication'
     ],
     # 'DATETIME_FORMAT': "%d/%m/%Y %H:%M:%S",
@@ -109,11 +110,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'artemisbd', 
-        'USER': 'artemis', 
-        'PASSWORD': 'EjxS1JfdlB9aaBKEiOf29rZp40XNuAfi',
-        'HOST': '198.199.85.20', 
-        'PORT': '5432',
+        'NAME': 'NAME', 
+        'USER': 'USER', 
+        'PASSWORD': 'PASSWORD',
+        'HOST': 'HOST', 
+        'PORT': 'PORT',
     }
 }
 
@@ -157,5 +158,5 @@ USE_TZ = True
 
 STATIC_URL = '/static_artemis/'
 STATIC_ROOT ='static'
-MEDIA_URL = '/media_artemis/'
-MEDIA_ROOT = '/django/productivo/artemis-edu/media/images/'
+MEDIA_URL = 'media_artemis/'
+MEDIA_ROOT = '/django/productivo/artemis-edu/mysite/media'

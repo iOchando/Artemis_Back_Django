@@ -56,9 +56,10 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
+    
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
         # 'knox.auth.TokenAuthentication'
     ],
     # 'DATETIME_FORMAT': "%d/%m/%Y %H:%M:%S",
@@ -109,10 +110,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'artemis', 
-        'USER': 'gf', 
-        'PASSWORD': 'uPKsp22tBeBC506WRBv21d7kniWiELwg',
-        'HOST': '157.230.2.213', 
+        'NAME': 'artemisbd', 
+        'USER': 'artemis', 
+        'PASSWORD': 'EjxS1JfdlB9aaBKEiOf29rZp40XNuAfi',
+        'HOST': '198.199.85.20', 
         'PORT': '5432',
     }
 }
@@ -157,5 +158,5 @@ USE_TZ = True
 
 STATIC_URL = '/static_artemis/'
 STATIC_ROOT ='static'
-MEDIA_URL = '/media_artemis/'
-MEDIA_ROOT = 'media/images'
+MEDIA_URL = 'media_artemis/'
+MEDIA_ROOT = '/django/productivo/artemis-edu/mysite/media'
